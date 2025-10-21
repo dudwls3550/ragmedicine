@@ -1,0 +1,855 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: AuditLog
+  labels:
+    app: AuditLog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: AuditLog
+  template:
+    metadata:
+      labels:
+        app: AuditLog
+    spec:
+      containers:
+        - name: AuditLog
+          image: username/AuditLog:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: QnAEngine
+  labels:
+    app: QnAEngine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: QnAEngine
+  template:
+    metadata:
+      labels:
+        app: QnAEngine
+    spec:
+      containers:
+        - name: QnAEngine
+          image: username/QnAEngine:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Authentication
+  labels:
+    app: Authentication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Authentication
+  template:
+    metadata:
+      labels:
+        app: Authentication
+    spec:
+      containers:
+        - name: Authentication
+          image: username/Authentication:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ExternalMedicalKnowledgeSync
+  labels:
+    app: ExternalMedicalKnowledgeSync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ExternalMedicalKnowledgeSync
+  template:
+    metadata:
+      labels:
+        app: ExternalMedicalKnowledgeSync
+    spec:
+      containers:
+        - name: ExternalMedicalKnowledgeSync
+          image: username/ExternalMedicalKnowledgeSync:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: FeedbackNotification
+  labels:
+    app: FeedbackNotification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: FeedbackNotification
+  template:
+    metadata:
+      labels:
+        app: FeedbackNotification
+    spec:
+      containers:
+        - name: FeedbackNotification
+          image: username/FeedbackNotification:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ResidentQnA
+  labels:
+    app: ResidentQnA
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ResidentQnA
+  template:
+    metadata:
+      labels:
+        app: ResidentQnA
+    spec:
+      containers:
+        - name: ResidentQnA
+          image: username/ResidentQnA:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: UserManagement
+  labels:
+    app: UserManagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: UserManagement
+  template:
+    metadata:
+      labels:
+        app: UserManagement
+    spec:
+      containers:
+        - name: UserManagement
+          image: username/UserManagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ResidentQnA
+  labels:
+    app: ResidentQnA
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ResidentQnA
+  template:
+    metadata:
+      labels:
+        app: ResidentQnA
+    spec:
+      containers:
+        - name: ResidentQnA
+          image: username/ResidentQnA:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: QnAEngine
+  labels:
+    app: QnAEngine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: QnAEngine
+  template:
+    metadata:
+      labels:
+        app: QnAEngine
+    spec:
+      containers:
+        - name: QnAEngine
+          image: username/QnAEngine:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Authentication
+  labels:
+    app: Authentication
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Authentication
+  template:
+    metadata:
+      labels:
+        app: Authentication
+    spec:
+      containers:
+        - name: Authentication
+          image: username/Authentication:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: AuditLog
+  labels:
+    app: AuditLog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: AuditLog
+  template:
+    metadata:
+      labels:
+        app: AuditLog
+    spec:
+      containers:
+        - name: AuditLog
+          image: username/AuditLog:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: UserManagement
+  labels:
+    app: UserManagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: UserManagement
+  template:
+    metadata:
+      labels:
+        app: UserManagement
+    spec:
+      containers:
+        - name: UserManagement
+          image: username/UserManagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ExternalMedicalKnowledgeSync
+  labels:
+    app: ExternalMedicalKnowledgeSync
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ExternalMedicalKnowledgeSync
+  template:
+    metadata:
+      labels:
+        app: ExternalMedicalKnowledgeSync
+    spec:
+      containers:
+        - name: ExternalMedicalKnowledgeSync
+          image: username/ExternalMedicalKnowledgeSync:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: FeedbackNotification
+  labels:
+    app: FeedbackNotification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: FeedbackNotification
+  template:
+    metadata:
+      labels:
+        app: FeedbackNotification
+    spec:
+      containers:
+        - name: FeedbackNotification
+          image: username/FeedbackNotification:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui
+  labels:
+    app: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui
+  template:
+    metadata:
+      labels:
+        app: ui
+    spec:
+      containers:
+        - name: ui
+          image: username/ui:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: AuditLog
+  labels:
+    app: AuditLog
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: AuditLog
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: QnAEngine
+  labels:
+    app: QnAEngine
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: QnAEngine
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: Authentication
+  labels:
+    app: Authentication
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: Authentication
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ExternalMedicalKnowledgeSync
+  labels:
+    app: ExternalMedicalKnowledgeSync
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: ExternalMedicalKnowledgeSync
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: FeedbackNotification
+  labels:
+    app: FeedbackNotification
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: FeedbackNotification
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ResidentQnA
+  labels:
+    app: ResidentQnA
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: ResidentQnA
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: UserManagement
+  labels:
+    app: UserManagement
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: UserManagement
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ResidentQnA
+  labels:
+    app: ResidentQnA
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: ResidentQnA
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: QnAEngine
+  labels:
+    app: QnAEngine
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: QnAEngine
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: Authentication
+  labels:
+    app: Authentication
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: Authentication
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: AuditLog
+  labels:
+    app: AuditLog
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: AuditLog
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: UserManagement
+  labels:
+    app: UserManagement
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: UserManagement
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ExternalMedicalKnowledgeSync
+  labels:
+    app: ExternalMedicalKnowledgeSync
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: ExternalMedicalKnowledgeSync
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: FeedbackNotification
+  labels:
+    app: FeedbackNotification
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: FeedbackNotification
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui
+  labels:
+    app: ui
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: ui
+

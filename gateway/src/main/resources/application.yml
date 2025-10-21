@@ -1,0 +1,172 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+#<<< API Gateway / Routes
+      routes:
+        - id: AuditLog
+          uri: http://localhost:8082
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: QnAEngine
+          uri: http://localhost:8084
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: Authentication
+          uri: http://localhost:8081
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: ExternalMedicalKnowledgeSync
+          uri: http://localhost:8082
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: FeedbackNotification
+          uri: http://localhost:8083
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: ResidentQnA
+          uri: http://localhost:8085
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: UserManagement
+          uri: http://localhost:8086
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: ResidentQnA
+          uri: http://localhost:8085
+          predicates:
+            - Path=/feedbacks/**, /questionAnswers/**, /feedbacks/**, /questionAnswers/**, /questionAnswerDetails/**, /feedbackSummaries/**, /feedbackDetails/**, /questionHistories/**, /feedbackSummaries/**, /feedbackDetails/**, /questionAnswerDetails/**, /questionHistories/**
+        - id: QnAEngine
+          uri: http://localhost:8084
+          predicates:
+            - Path=/answerGenerations/**, /sourceEvidences/**, /sourceEvidences/**, /answerGenerations/**, /sourceCitations/**, /feedbackSummaries/**, /answerDetails/**, /knowledgeSourceIndices/**, /evidenceCitationLists/**, /generatedAnswerDetails/**, /knowledgeSourceReferences/**, /questionHistories/**
+        - id: Authentication
+          uri: http://localhost:8081
+          predicates:
+            - Path=/authorizations/**, /authenticationTokens/**, /authenticationTokens/**, /authorizations/**, /permissionLists/**, /userAccessProfiles/**, /tokenDetails/**, /authenticationSessions/**, /accessControlLists/**, /tokenStatuses/**, /userPermissions/**, /authenticationLogs/**
+        - id: AuditLog
+          uri: http://localhost:8080
+          predicates:
+            - Path=/auditLogs/**, /logRetentionPolicies/**, /logRetentionPolicies/**, /auditLogs/**, /activityLogSummaries/**, /auditLogEntries/**, /retentionPolicyConfigurations/**, /auditLogSummaries/**, /activityHistories/**, /retentionPolicyConfigurations/**
+        - id: UserManagement
+          uri: http://localhost:8086
+          predicates:
+            - Path=/abnormalActivities/**, /undefined/**, /users/**, /users/**, /abnormalActivities/**, /activityDetectionConfigurations/**, /userDetails/**, /userActivityHistories/**, /userLists/**, /abnormalActivityReports/**, /userLists/**, /abnormalActivityQueues/**, /activityDetectionReports/**, /userDetails/**, /userActivityLogs/**
+        - id: ExternalMedicalKnowledgeSync
+          uri: http://localhost:8082
+          predicates:
+            - Path=/knowledgeSyncs/**, /syncFailureAlerts/**, /knowledgeSyncs/**, /syncFailureAlerts/**, /knowledgeSyncStatuses/**, /activeFailureAlerts/**, /alertHistories/**, /syncHistories/**, /activeFailureAlerts/**, /alertHistories/**, /syncHistoryLogs/**, /syncStatusMonitors/**
+        - id: FeedbackNotification
+          uri: http://localhost:8083
+          predicates:
+            - Path=/feedbackNotifications/**, /feedbackNotificationStatistics/**, /feedbackNotificationStatistics/**, /feedbackNotifications/**, /notificationHistories/**, /feedbackRatioSummaries/**, /notificationAlertStatuses/**, /thresholdConfigurations/**, /feedbackStatisticsSummaries/**, /thresholdConfigurations/**, /notificationHistories/**
+        - id: ui
+          uri: http://localhost:0
+          predicates:
+            - Path=, 
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+#>>> API Gateway / Routes
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: AuditLog
+          uri: http://auditLog:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: QnAEngine
+          uri: http://qnAEngine:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: Authentication
+          uri: http://authentication:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: ExternalMedicalKnowledgeSync
+          uri: http://externalMedicalKnowledgeSync:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: FeedbackNotification
+          uri: http://feedbackNotification:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: ResidentQnA
+          uri: http://residentQnA:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: UserManagement
+          uri: http://userManagement:8080
+          predicates:
+            - Path=/undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+        - id: ResidentQnA
+          uri: http://residentQnA:8080
+          predicates:
+            - Path=/feedbacks/**, /questionAnswers/**, /feedbacks/**, /questionAnswers/**, 
+        - id: QnAEngine
+          uri: http://qnAEngine:8080
+          predicates:
+            - Path=/answerGenerations/**, /sourceEvidences/**, /sourceEvidences/**, /answerGenerations/**, 
+        - id: Authentication
+          uri: http://authentication:8080
+          predicates:
+            - Path=/authorizations/**, /authenticationTokens/**, /authenticationTokens/**, /authorizations/**, 
+        - id: AuditLog
+          uri: http://auditLog:8080
+          predicates:
+            - Path=/auditLogs/**, /logRetentionPolicies/**, /logRetentionPolicies/**, /auditLogs/**, 
+        - id: UserManagement
+          uri: http://userManagement:8080
+          predicates:
+            - Path=/abnormalActivities/**, /undefined/**, /users/**, /users/**, /abnormalActivities/**, 
+        - id: ExternalMedicalKnowledgeSync
+          uri: http://externalMedicalKnowledgeSync:8080
+          predicates:
+            - Path=/knowledgeSyncs/**, /syncFailureAlerts/**, /knowledgeSyncs/**, /syncFailureAlerts/**, 
+        - id: FeedbackNotification
+          uri: http://feedbackNotification:8080
+          predicates:
+            - Path=/feedbackNotifications/**, /feedbackNotificationStatistics/**, /feedbackNotificationStatistics/**, /feedbackNotifications/**, 
+        - id: ui
+          uri: http://ui:8080
+          predicates:
+            - Path=, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
